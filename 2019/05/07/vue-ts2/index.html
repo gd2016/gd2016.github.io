@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="gd blog">
 <meta property="og:description" content="vue结合typescript在实际开发中遇到的问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-07T12:45:52.652Z">
+<meta property="og:updated_time" content="2019-05-18T09:02:41.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue + Typesctipt 开发实践">
 <meta name="twitter:description" content="vue结合typescript在实际开发中遇到的问题">
@@ -320,17 +320,13 @@ var _hmt = _hmt || [];
       
         <p>vue结合typescript在实际开发中遇到的问题</p>
 <a id="more"></a>
-<ol>
-<li><p>$refs类型声明（vue组件及dom节点）</p>
-</li>
-<li><p>挂载到Vue原型下的方法声明</p>
-</li>
-<li><p>全局global声明</p>
-</li>
-<li><p>类型断言 as</p>
-</li>
-</ol>
-
+<h2 id="refs类型声明（vue组件及dom节点）"><a href="#refs类型声明（vue组件及dom节点）" class="headerlink" title="$refs类型声明（vue组件及dom节点）"></a>$refs类型声明（vue组件及dom节点）</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">"app"</span> <span class="attr">id</span>=<span class="string">"app"</span> @<span class="attr">click</span>=<span class="string">"onClick"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nav-bar</span> <span class="attr">ref</span>=<span class="string">"navBar"</span> /&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> &#123; Component, Vue &#125; <span class="keyword">from</span> <span class="string">'vue-property-decorator'</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> NavBar <span class="keyword">from</span> <span class="string">'./NavBar.vue'</span>;</span></span><br><span class="line"><span class="undefined">  @Component(&#123;</span></span><br><span class="line"><span class="undefined">    components: &#123;</span></span><br><span class="line"><span class="undefined">      DetailPopup,</span></span><br><span class="line"><span class="undefined">      NavBar,</span></span><br><span class="line"><span class="undefined">      DownloadPopup,</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Vue</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    public $refs!: &#123; <span class="comment">// strictPropertyInitialization 需要对所有的实际属性赋值 所以需要加感叹号</span></span></span><br><span class="line"><span class="undefined">      app: HTMLDivElement,</span></span><br><span class="line"><span class="undefined">      navBar: NavBar</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在使用到ref时，需要有相应的类型声明</p>
+<h2 id="挂载到Vue原型下的方法声明"><a href="#挂载到Vue原型下的方法声明" class="headerlink" title="挂载到Vue原型下的方法声明"></a>挂载到Vue原型下的方法声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"></span><br><span class="line">Vue.prototype.$setTitle = <span class="function">(<span class="params">title: string</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.title = title + <span class="string">'_全历史'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">Vue.prototype.wakeupApp = <span class="function">(<span class="params"><span class="keyword">from</span>: string = <span class="string">'m_site'</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> t = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  <span class="keyword">const</span> url = <span class="built_in">window</span>.location.href.replace(<span class="regexp">/https?:/gi</span>, <span class="string">'__ALLHISTORY_APP_HOST__'</span>);</span><br><span class="line">  <span class="keyword">const</span> timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> c = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">if</span> (c - t &gt; <span class="number">1200</span>) &#123;</span><br><span class="line">      clearTimeout(timer);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> downloadUrl = <span class="string">'__ALLHISTORY_DOMAIN_HOSTNAME__/staticPage/download'</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">from</span>) &#123;</span><br><span class="line">      downloadUrl += <span class="string">`/<span class="subst">$&#123;<span class="keyword">from</span>&#125;</span>`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    downloadUrl += <span class="string">`?rt=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(url)&#125;</span>`</span>;</span><br><span class="line">    <span class="built_in">window</span>.location.href = downloadUrl;</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">  <span class="built_in">window</span>.location.href = url;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//vue.d.ts</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line">declare <span class="built_in">module</span> <span class="string">'vue/types/vue'</span> &#123;</span><br><span class="line">  interface Vue &#123;</span><br><span class="line">    $setTitle(title:string):<span class="keyword">void</span>,</span><br><span class="line">    wakeupApp: <span class="function">(<span class="params"><span class="keyword">from</span>?: string</span>) =&gt;</span> <span class="keyword">void</span></span><br><span class="line">    <span class="comment">// $message:</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>事实上 <strong>declare module ‘vue/types/vue’</strong> 意为在 node_module/vue/types/vue.d.ts 追加声明接口类型</p>
+<h2 id="全局global声明"><a href="#全局global声明" class="headerlink" title="全局global声明"></a>全局global声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;WeChart&#125; <span class="keyword">from</span> <span class="string">'../utils/wechart'</span>;</span><br><span class="line">declare global &#123;</span><br><span class="line">  interface Window &#123;</span><br><span class="line">    wechart: WeChart,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有时我们会遇到挂载到window下的自定义方法，这时需要在global下的window中进行类型声明</p>
+<h2 id="类型断言-as"><a href="#类型断言-as" class="headerlink" title="类型断言 as"></a>类型断言 as</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public close(e: Event) &#123; <span class="comment">//e.target类型为EventTarget 但是该对象下没有classList属性</span></span><br><span class="line">  <span class="keyword">const</span> target = e.target <span class="keyword">as</span> Element; <span class="comment">//当我们只需要知道点击对象的classList时，可以断言为Element类型。因为只有Element类型下有classList属性</span></span><br><span class="line">  <span class="keyword">if</span> (target.classList.contains(<span class="string">'popup-mask'</span>)) &#123; </span><br><span class="line">    e.stopPropagation();</span><br><span class="line">    <span class="keyword">this</span>.$emit(<span class="string">'close-pop'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public onLinkClick(id: number, <span class="attr">e</span>: Event) &#123;</span><br><span class="line">  <span class="keyword">const</span> target = e.target <span class="keyword">as</span> Node;</span><br><span class="line">  <span class="keyword">if</span> (target &amp;&amp; target.nodeName === <span class="string">'A'</span>) &#123; <span class="comment">//用到了nodeName属性，证明点击的对象是在节点类型的基础上操作</span></span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.$emit(<span class="string">'on-link-click'</span>, id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Dom = <span class="built_in">document</span>.querySelector(<span class="string">'#aricleDetail'</span>) <span class="keyword">as</span> HTMLDivElement;</span><br><span class="line">Dom.style.color = <span class="string">'red'</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -447,8 +443,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,6 +513,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#refs类型声明（vue组件及dom节点）"><span class="nav-number">1.</span> <span class="nav-text">$refs类型声明（vue组件及dom节点）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载到Vue原型下的方法声明"><span class="nav-number">2.</span> <span class="nav-text">挂载到Vue原型下的方法声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局global声明"><span class="nav-number">3.</span> <span class="nav-text">全局global声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型断言-as"><span class="nav-number">4.</span> <span class="nav-text">类型断言 as</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
