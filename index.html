@@ -251,6 +251,517 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="guoding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avastar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gd blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/30/css/" itemprop="url">css</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T18:57:38+08:00">
+                2019-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用text-align-last对齐两端文本"><a href="#使用text-align-last对齐两端文本" class="headerlink" title="使用text-align-last对齐两端文本"></a>使用text-align-last对齐两端文本</h2><h2 id="使用-not-去除无用属性"><a href="#使用-not-去除无用属性" class="headerlink" title="使用:not()去除无用属性"></a>使用:not()去除无用属性</h2><h2 id="使用attr-抓取data"><a href="#使用attr-抓取data" class="headerlink" title="使用attr()抓取data-*"></a>使用attr()抓取data-*</h2><p>在标签上自定义属性data-*，通过attr()获取其内容赋值到content上</p>
+<p>参考 <a href="https://juejin.im/post/5d4d0ec651882549594e7293" target="_blank" rel="noopener">https://juejin.im/post/5d4d0ec651882549594e7293</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/react/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="guoding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avastar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gd blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/30/react/" itemprop="url">react学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T11:43:41+08:00">
+                2019-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="isBatchingUpdate"><a href="#isBatchingUpdate" class="headerlink" title="isBatchingUpdate"></a>isBatchingUpdate</h2><p>在React的setState函数实现中，会根据一个变量 isBatchingUpdate 来判断是直接同步更新this.state还是放到队列中异步更新 。React使用了事务的机制，React的每个<strong>生命周期</strong>和<strong>合成事件</strong>都处在一个大的事务当中。在事务的前置钩子中调用batchedUpdates方法修改isBatchingUpdates变量为true，在后置钩子中将变量置为false。原生绑定事件和setTimeout异步的函数没有进入到React的事务当中，或者当他们执行时，刚刚的事务已近结束了，后置钩子触发了，所以此时的setState会直接进入非批量更新模式，表现在我们看来成为了同步SetState。</p>
+<p>参考 <a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/18" target="_blank" rel="noopener">https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/18</a></p>
+<h2 id="浏览器和Node-事件循环的区别"><a href="#浏览器和Node-事件循环的区别" class="headerlink" title="浏览器和Node 事件循环的区别"></a>浏览器和Node 事件循环的区别</h2><p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26" target="_blank" rel="noopener">https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26</a></p>
+<h2 id="React-Hook"><a href="#React-Hook" class="headerlink" title="React Hook"></a>React Hook</h2><p>参考 <a href="https://juejin.im/post/5d754dbde51d4561cd2466bf#heading-1" target="_blank" rel="noopener">https://juejin.im/post/5d754dbde51d4561cd2466bf#heading-1</a></p>
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>相当于生命周期</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  message.info(<span class="string">'componentDidMount'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    message.info(<span class="string">'componentWillUnmout'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+<p>第二个参数为该副作用监听的状态数组，当对应状态发生变动时会执行副作用，<strong>如果第二个参数为空（不写），那么在每一个 State 变化时都会执行该副作用，如果是空数组，则相当于只触发一次</strong> </p>
+<blockquote>
+<p>在 useEffect 中，所有的变量的值都会保留在该副作用执行的时刻，类似于 for 循环中的 let 或者 闭包，所有的变量都维持在副作用执行时的状态，也有人称这个为 Capture Value。</p>
+</blockquote>
+<h3 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h3><p>对不同useEffect中存在的相同逻辑的封装，减少代码冗余，配合 useEffect 使用。</p>
+<p>第一个参数为生成的回调方法，第二个参数为该方法关联的状态，任一状态发生变动都会重新生成新的回调。</p>
+<h3 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h3><h3 id="useMemo-相当于vue的计算属性"><a href="#useMemo-相当于vue的计算属性" class="headerlink" title="useMemo  相当于vue的计算属性"></a>useMemo  相当于vue的计算属性</h3><p>第一个参数为一个 Getter 方法，返回值为要缓存的<strong>数据或组件</strong>，第二个参数为该返回值相关联的状态，当其中任何一个状态发生变化时就会重新调用 Getter 方法生成新的返回值。</p>
+<h3 id="classnames库"><a href="#classnames库" class="headerlink" title="classnames库"></a>classnames库</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="guoding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avastar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gd blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/12/notes/" itemprop="url">notes</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-12T14:38:43+08:00">
+                2019-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>学习笔记</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/12/notes/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/utils/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="guoding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avastar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gd blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/04/utils/" itemprop="url">提升开发效率</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-04T20:35:49+08:00">
+                2019-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="eslint配合vscode自动纠错"><a href="#eslint配合vscode自动纠错" class="headerlink" title="eslint配合vscode自动纠错"></a>eslint配合vscode自动纠错</h2><p>首先需要vscode添加eslint插件；<br>然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.eslintrc.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  extends: [</span><br><span class="line">    <span class="string">"standard"</span> <span class="comment">//采用的流行风格</span></span><br><span class="line">  ],</span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">"no-new"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"eqeqeq"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-unreachable"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-useless-escape"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-mixed-operators"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  globals: &#123;</span><br><span class="line">    <span class="string">"$"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当采用这规则时，vscode会自动提示加载不到eslint-config-standard包，所以需要我们自己去下载<br>下面是需要下载的npm包</p>
+<ul>
+<li>eslint</li>
+<li>eslint-config-standard</li>
+<li>eslint-plugin-standard</li>
+<li>eslint-plugin-import</li>
+<li>eslint-plugin-node</li>
+<li>eslint-plugin-promise</li>
+</ul>
+<p>当前只是针对js文件的js代码进行纠错，其实还有vue文件，ts文件，html都可以纠错，只需下载相应npm包即可</p>
+<p>如果需要对html文件中的js代码纠错,那么需要在plugins字段中添加html，同时下载eslint-plugin-html。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  extends: [</span><br><span class="line">    <span class="string">"standard"</span>,</span><br><span class="line">  ],</span><br><span class="line">  plugins:[</span><br><span class="line">    <span class="string">'html'</span></span><br><span class="line">  ],</span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">"no-new"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"eqeqeq"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-unreachable"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-useless-escape"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-mixed-operators"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-tabs"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  globals: &#123;</span><br><span class="line">    <span class="string">"$"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加vscode配置： 文件 -&gt; 首选项 -&gt; 设置 -&gt; setting.json</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"eslint.validate"</span>: [</span><br><span class="line">  &#123; <span class="string">"language"</span>: <span class="string">"html"</span>, <span class="string">"autoFix"</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/npm包构建环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -370,7 +881,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/08/notes/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/08/promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="guoding">
@@ -389,7 +900,7 @@ var _hmt = _hmt || [];
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/08/notes/" itemprop="url">笔记</a></h1>
+                <a class="post-title-link" href="/2019/05/08/promise/" itemprop="url">Promise</a></h1>
         
 
         <div class="post-meta">
@@ -440,10 +951,10 @@ var _hmt = _hmt || [];
 
       
         
-          <p>记录一些不明白的点</p>
+          <p>关于Promise的异常处理</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/05/08/notes/#more" rel="contents">
+            <a class="btn" href="/2019/05/08/promise/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -901,7 +1412,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

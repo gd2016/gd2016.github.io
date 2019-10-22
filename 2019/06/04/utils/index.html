@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="日新月异">
+<meta name="description" content="eslint配合vscode自动纠错首先需要vscode添加eslint插件；然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。 1234567891011121314151617//.eslintrc.jsmodule.exports = &amp;#123;  root: true,  extends: [    &quot;sta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="npm包构建环境">
-<meta property="og:url" content="http://yoursite.com/2019/05/18/npm包构建环境/index.html">
+<meta property="og:title" content="提升开发效率">
+<meta property="og:url" content="http://yoursite.com/2019/06/04/utils/index.html">
 <meta property="og:site_name" content="gd blog">
-<meta property="og:description" content="日新月异">
+<meta property="og:description" content="eslint配合vscode自动纠错首先需要vscode添加eslint插件；然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。 1234567891011121314151617//.eslintrc.jsmodule.exports = &amp;#123;  root: true,  extends: [    &quot;sta">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-25T05:20:52.218Z">
+<meta property="og:updated_time" content="2019-06-04T13:05:07.562Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="npm包构建环境">
-<meta name="twitter:description" content="日新月异">
+<meta name="twitter:title" content="提升开发效率">
+<meta name="twitter:description" content="eslint配合vscode自动纠错首先需要vscode添加eslint插件；然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。 1234567891011121314151617//.eslintrc.jsmodule.exports = &amp;#123;  root: true,  extends: [    &quot;sta">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/18/npm包构建环境/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/04/utils/">
 
 
 
 
 
-  <title>npm包构建环境 | gd blog</title>
+  <title>提升开发效率 | gd blog</title>
   
 
 
@@ -251,7 +251,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/npm包构建环境/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/utils/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="guoding">
@@ -268,7 +268,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h1 class="post-title" itemprop="name headline">npm包构建环境</h1>
+          <h1 class="post-title" itemprop="name headline">提升开发效率</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-18T17:10:44+08:00">
-                2019-05-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-04T20:35:49+08:00">
+                2019-06-04
               </time>
             
 
@@ -318,7 +318,22 @@ var _hmt = _hmt || [];
       
 
       
-        
+        <h2 id="eslint配合vscode自动纠错"><a href="#eslint配合vscode自动纠错" class="headerlink" title="eslint配合vscode自动纠错"></a>eslint配合vscode自动纠错</h2><p>首先需要vscode添加eslint插件；<br>然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.eslintrc.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  extends: [</span><br><span class="line">    <span class="string">"standard"</span> <span class="comment">//采用的流行风格</span></span><br><span class="line">  ],</span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">"no-new"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"eqeqeq"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-unreachable"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-useless-escape"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-mixed-operators"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  globals: &#123;</span><br><span class="line">    <span class="string">"$"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当采用这规则时，vscode会自动提示加载不到eslint-config-standard包，所以需要我们自己去下载<br>下面是需要下载的npm包</p>
+<ul>
+<li>eslint</li>
+<li>eslint-config-standard</li>
+<li>eslint-plugin-standard</li>
+<li>eslint-plugin-import</li>
+<li>eslint-plugin-node</li>
+<li>eslint-plugin-promise</li>
+</ul>
+<p>当前只是针对js文件的js代码进行纠错，其实还有vue文件，ts文件，html都可以纠错，只需下载相应npm包即可</p>
+<p>如果需要对html文件中的js代码纠错,那么需要在plugins字段中添加html，同时下载eslint-plugin-html。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  extends: [</span><br><span class="line">    <span class="string">"standard"</span>,</span><br><span class="line">  ],</span><br><span class="line">  plugins:[</span><br><span class="line">    <span class="string">'html'</span></span><br><span class="line">  ],</span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">"no-new"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"eqeqeq"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-unreachable"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-useless-escape"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-mixed-operators"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-tabs"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  globals: &#123;</span><br><span class="line">    <span class="string">"$"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加vscode配置： 文件 -&gt; 首选项 -&gt; 设置 -&gt; setting.json</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"eslint.validate"</span>: [</span><br><span class="line">  &#123; <span class="string">"language"</span>: <span class="string">"html"</span>, <span class="string">"autoFix"</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -371,8 +386,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/08/promise/" rel="next" title="Promise">
-                <i class="fa fa-chevron-left"></i> Promise
+              <a href="/2019/05/18/npm包构建环境/" rel="next" title="npm包构建环境">
+                <i class="fa fa-chevron-left"></i> npm包构建环境
               </a>
             
           </div>
@@ -381,8 +396,8 @@ var _hmt = _hmt || [];
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/04/utils/" rel="prev" title="提升开发效率">
-                提升开发效率 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/12/notes/" rel="prev" title="notes">
+                notes <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -435,8 +450,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -496,6 +520,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#eslint配合vscode自动纠错"><span class="nav-number">1.</span> <span class="nav-text">eslint配合vscode自动纠错</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
