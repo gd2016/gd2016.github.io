@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="eslint配合vscode自动纠错首先需要vscode添加eslint插件；然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。 1234567891011121314151617//.eslintrc.jsmodule.exports = &amp;#123;  root: true,  extends: [    &quot;sta">
+<meta name="description" content="工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="提升开发效率">
 <meta property="og:url" content="http://yoursite.com/2019/06/04/utils/index.html">
 <meta property="og:site_name" content="gd blog">
-<meta property="og:description" content="eslint配合vscode自动纠错首先需要vscode添加eslint插件；然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。 1234567891011121314151617//.eslintrc.jsmodule.exports = &amp;#123;  root: true,  extends: [    &quot;sta">
+<meta property="og:description" content="工具">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-04T13:05:07.562Z">
+<meta property="og:updated_time" content="2019-10-22T06:37:19.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="提升开发效率">
-<meta name="twitter:description" content="eslint配合vscode自动纠错首先需要vscode添加eslint插件；然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。 1234567891011121314151617//.eslintrc.jsmodule.exports = &amp;#123;  root: true,  extends: [    &quot;sta">
+<meta name="twitter:description" content="工具">
 
 
 
@@ -318,7 +318,9 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="eslint配合vscode自动纠错"><a href="#eslint配合vscode自动纠错" class="headerlink" title="eslint配合vscode自动纠错"></a>eslint配合vscode自动纠错</h2><p>首先需要vscode添加eslint插件；<br>然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。</p>
+        <p>工具</p>
+<a id="more"></a>
+<h2 id="eslint配合vscode自动纠错"><a href="#eslint配合vscode自动纠错" class="headerlink" title="eslint配合vscode自动纠错"></a>eslint配合vscode自动纠错</h2><p>首先需要vscode添加eslint插件；<br>然后项目添加.eslintrc.js文件，根据extends字段中的规则下载相应的npm纠错检测包，例如使用standard风格。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.eslintrc.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  extends: [</span><br><span class="line">    <span class="string">"standard"</span> <span class="comment">//采用的流行风格</span></span><br><span class="line">  ],</span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">"no-new"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"eqeqeq"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-unreachable"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-useless-escape"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"no-mixed-operators"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  globals: &#123;</span><br><span class="line">    <span class="string">"$"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当采用这规则时，vscode会自动提示加载不到eslint-config-standard包，所以需要我们自己去下载<br>下面是需要下载的npm包</p>
 <ul>
