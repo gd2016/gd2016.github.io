@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="umi-ui启动顺序 node ./scripts/ui.js 打包3个ui插件： plugin-ui-blocks/plugin-ui-tasks/preset-ui 运行ui界面  ui/web 客户端： 运行界面 packages/ui/web 执行app.ts  render方法初始化 获取三方静态资源 初始化socket 获取项目列表 如果是task路由 则表示打开一个项目 初始化ui插">
+<meta name="description" content="在umi基础上扩展的umi-ui插件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="umi-ui 源码解析">
 <meta property="og:url" content="http://yoursite.com/2020/10/16/umi-ui/index.html">
 <meta property="og:site_name" content="gd blog">
-<meta property="og:description" content="umi-ui启动顺序 node ./scripts/ui.js 打包3个ui插件： plugin-ui-blocks/plugin-ui-tasks/preset-ui 运行ui界面  ui/web 客户端： 运行界面 packages/ui/web 执行app.ts  render方法初始化 获取三方静态资源 初始化socket 获取项目列表 如果是task路由 则表示打开一个项目 初始化ui插">
+<meta property="og:description" content="在umi基础上扩展的umi-ui插件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-10-16T02:51:05.044Z">
+<meta property="og:updated_time" content="2020-10-16T02:53:29.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="umi-ui 源码解析">
-<meta name="twitter:description" content="umi-ui启动顺序 node ./scripts/ui.js 打包3个ui插件： plugin-ui-blocks/plugin-ui-tasks/preset-ui 运行ui界面  ui/web 客户端： 运行界面 packages/ui/web 执行app.ts  render方法初始化 获取三方静态资源 初始化socket 获取项目列表 如果是task路由 则表示打开一个项目 初始化ui插">
+<meta name="twitter:description" content="在umi基础上扩展的umi-ui插件">
 
 
 
@@ -309,7 +309,9 @@
       
 
       
-        <h2 id="umi-ui启动顺序"><a href="#umi-ui启动顺序" class="headerlink" title="umi-ui启动顺序"></a>umi-ui启动顺序</h2><ol>
+        <p>在umi基础上扩展的umi-ui插件</p>
+<a id="more"></a>
+<h2 id="umi-ui启动顺序"><a href="#umi-ui启动顺序" class="headerlink" title="umi-ui启动顺序"></a>umi-ui启动顺序</h2><ol>
 <li>node ./scripts/ui.js</li>
 <li><strong>打包</strong>3个ui插件： plugin-ui-blocks/plugin-ui-tasks/preset-ui</li>
 <li>运行ui界面  ui/web</li>
