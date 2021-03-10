@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="react 相关">
+<meta name="description" content="日新月异">
 <meta property="og:type" content="article">
-<meta property="og:title" content="react学习笔记">
-<meta property="og:url" content="http://yoursite.com/2019/08/30/react/index.html">
+<meta property="og:title" content="gd blog">
+<meta property="og:url" content="http://yoursite.com/2021/03/10/pro/index.html">
 <meta property="og:site_name" content="gd blog">
-<meta property="og:description" content="react 相关">
+<meta property="og:description" content="日新月异">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T06:36:51.136Z">
+<meta property="og:updated_time" content="2021-03-10T10:45:12.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="react学习笔记">
-<meta name="twitter:description" content="react 相关">
+<meta name="twitter:title" content="gd blog">
+<meta name="twitter:description" content="日新月异">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/30/react/">
+  <link rel="canonical" href="http://yoursite.com/2021/03/10/pro/">
 
 
 
 
 
-  <title>react学习笔记 | gd blog</title>
+  <title> | gd blog</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/react/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/10/pro/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="guoding">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">react学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T11:43:41+08:00">
-                2019-08-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-10T16:12:11+08:00">
+                2021-03-10
               </time>
             
 
@@ -309,22 +309,7 @@
       
 
       
-        <p>react 相关</p>
-<a id="more"></a>
-<h2 id="isBatchingUpdate"><a href="#isBatchingUpdate" class="headerlink" title="isBatchingUpdate"></a>isBatchingUpdate</h2><p>在React的setState函数实现中，会根据一个变量 isBatchingUpdate 来判断是直接同步更新this.state还是放到队列中异步更新 。React使用了事务的机制，React的每个<strong>生命周期</strong>和<strong>合成事件</strong>都处在一个大的事务当中。在事务的前置钩子中调用batchedUpdates方法修改isBatchingUpdates变量为true，在后置钩子中将变量置为false。原生绑定事件和setTimeout异步的函数没有进入到React的事务当中，或者当他们执行时，刚刚的事务已近结束了，后置钩子触发了，所以此时的setState会直接进入非批量更新模式，表现在我们看来成为了同步SetState。</p>
-<p>参考 <a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/18" target="_blank" rel="noopener">https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/18</a></p>
-<h2 id="浏览器和Node-事件循环的区别"><a href="#浏览器和Node-事件循环的区别" class="headerlink" title="浏览器和Node 事件循环的区别"></a>浏览器和Node 事件循环的区别</h2><p><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26" target="_blank" rel="noopener">https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26</a></p>
-<h2 id="React-Hook"><a href="#React-Hook" class="headerlink" title="React Hook"></a>React Hook</h2><p>参考 <a href="https://juejin.im/post/5d754dbde51d4561cd2466bf#heading-1" target="_blank" rel="noopener">https://juejin.im/post/5d754dbde51d4561cd2466bf#heading-1</a></p>
-<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>相当于生命周期</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  message.info(<span class="string">'componentDidMount'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    message.info(<span class="string">'componentWillUnmout'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
-<p>第二个参数为该副作用监听的状态数组，当对应状态发生变动时会执行副作用，<strong>如果第二个参数为空（不写），那么在每一个 State 变化时都会执行该副作用，如果是空数组，则相当于只触发一次</strong> </p>
-<blockquote>
-<p>在 useEffect 中，所有的变量的值都会保留在该副作用执行的时刻，类似于 for 循环中的 let 或者 闭包，所有的变量都维持在副作用执行时的状态，也有人称这个为 Capture Value。</p>
-</blockquote>
-<h3 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h3><p>对不同useEffect中存在的相同逻辑的封装，减少代码冗余，配合 useEffect 使用。</p>
-<p>第一个参数为生成的回调方法，第二个参数为该方法关联的状态，任一状态发生变动都会重新生成新的回调。</p>
-<h3 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h3><h3 id="useMemo-相当于vue的计算属性"><a href="#useMemo-相当于vue的计算属性" class="headerlink" title="useMemo  相当于vue的计算属性"></a>useMemo  相当于vue的计算属性</h3><p>第一个参数为一个 Getter 方法，返回值为要缓存的<strong>数据或组件</strong>，第二个参数为该返回值相关联的状态，当其中任何一个状态发生变化时就会重新调用 Getter 方法生成新的返回值。</p>
-<h3 id="classnames库"><a href="#classnames库" class="headerlink" title="classnames库"></a>classnames库</h3>
+        
       
     </div>
     
@@ -377,8 +362,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/12/notes/" rel="next" title="notes">
-                <i class="fa fa-chevron-left"></i> notes
+              <a href="/2021/03/04/bfc/" rel="next" title="关于bfc">
+                <i class="fa fa-chevron-left"></i> 关于bfc
               </a>
             
           </div>
@@ -386,10 +371,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/30/css/" rel="prev" title="css">
-                css <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -441,17 +422,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -511,22 +483,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#isBatchingUpdate"><span class="nav-number">1.</span> <span class="nav-text">isBatchingUpdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器和Node-事件循环的区别"><span class="nav-number">2.</span> <span class="nav-text">浏览器和Node 事件循环的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Hook"><span class="nav-number">3.</span> <span class="nav-text">React Hook</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useEffect"><span class="nav-number">3.1.</span> <span class="nav-text">useEffect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useCallback"><span class="nav-number">3.2.</span> <span class="nav-text">useCallback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useRef"><span class="nav-number">3.3.</span> <span class="nav-text">useRef</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useMemo-相当于vue的计算属性"><span class="nav-number">3.4.</span> <span class="nav-text">useMemo  相当于vue的计算属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#classnames库"><span class="nav-number">3.5.</span> <span class="nav-text">classnames库</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
