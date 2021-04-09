@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="gd blog">
 <meta property="og:description" content="什么是BFC Block formatting context 独立的渲染区域，块级元素格式化上下文，决定了内容的布局方式与区域外部没有任何关系一般通过修改元素的css，该元素对内部元素和外部元素表现出的一些特性 就称为BFC  触发条件 float的值不为none overflow值不为visiable display的值为inline-block、table-cell、table-capti">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-04-07T09:45:55.947Z">
+<meta property="og:updated_time" content="2021-04-09T03:24:48.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于bfc">
 <meta name="twitter:description" content="什么是BFC Block formatting context 独立的渲染区域，块级元素格式化上下文，决定了内容的布局方式与区域外部没有任何关系一般通过修改元素的css，该元素对内部元素和外部元素表现出的一些特性 就称为BFC  触发条件 float的值不为none overflow值不为visiable display的值为inline-block、table-cell、table-capti">
@@ -335,6 +335,7 @@
 <li>margin不会传递给父级（父级触发BFC）</li>
 <li>两个相邻元素上下margin不会重叠（给其中一个元素增加一个父级，然后让他的父级触发BFC）</li>
 </ol>
+<h1 id="bfc的应用"><a href="#bfc的应用" class="headerlink" title="bfc的应用"></a>bfc的应用</h1><p>清除浮动：父元素设置overflow: hidden 触发BFC实现清除浮动，防止父元素高度塌陷，后面的元素被覆盖，实现文字环绕等等。<br>消除相邻元素垂直方向的边距重叠：第二个子元素套一层，并设置overflow: hidden，构建BFC使其不影响外部元素。<br>消除父子元素边距重叠，父元素设置overflow: hidden</p>
 
       
     </div>
@@ -475,7 +476,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -528,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是BFC"><span class="nav-number">1.</span> <span class="nav-text">什么是BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发条件"><span class="nav-number">2.</span> <span class="nav-text">触发条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通文档流的布局规则"><span class="nav-number">3.</span> <span class="nav-text">普通文档流的布局规则</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#bfc的布局规则"><span class="nav-number"></span> <span class="nav-text">bfc的布局规则</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是BFC"><span class="nav-number">1.</span> <span class="nav-text">什么是BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发条件"><span class="nav-number">2.</span> <span class="nav-text">触发条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通文档流的布局规则"><span class="nav-number">3.</span> <span class="nav-text">普通文档流的布局规则</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#bfc的布局规则"><span class="nav-number"></span> <span class="nav-text">bfc的布局规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bfc的应用"><span class="nav-number"></span> <span class="nav-text">bfc的应用</span></a></li></div>
             
 
           </div>
