@@ -312,34 +312,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h2 id="DNS解析域名的实际IP地址"><a href="#DNS解析域名的实际IP地址" class="headerlink" title="DNS解析域名的实际IP地址"></a>DNS解析域名的实际IP地址</h2><p>从浏览器 -&gt; 系统(hosts) -&gt; 路由器 -&gt; ISP 的缓存中寻找是否有网址对应的IP地址，找到直接下一步，没有则向 ISP 或者公共的域名解析服务发起 DNS 查找请求。查找的过程是递归查询的过程。 这个ISP就是互联网服务的提供商，面向用户提供的互联网接入等服务</p>
-<h2 id="检查浏览器的缓存"><a href="#检查浏览器的缓存" class="headerlink" title="检查浏览器的缓存"></a>检查浏览器的缓存</h2><p>根据cache-control和Expires检查是否命中强缓存，命中直接取内存或者本地磁盘的html，没有命中强缓存 进行下一步建立连接 根据响应判断是否命中协商缓存</p>
-<h2 id="与-WEB-服务器建立-TCP-连接。"><a href="#与-WEB-服务器建立-TCP-连接。" class="headerlink" title="与 WEB 服务器建立 TCP 连接。"></a>与 WEB 服务器建立 TCP 连接。</h2><p>三次握手</p>
-<ol>
-<li>客户端发送SYN报文连接请求，确定服务器是否能连接，此时状态置为SYN_SEND</li>
-<li>服务器如果能够连接，返回SYN+ACK报文给客户端，状态置为SYN_RECV</li>
-<li>客户端收到服务器的SYN+ACK，再向服务器发送ACK确认。 两端状态都置为ESTABLISHED状态，建立连接，开始传送数据</li>
-</ol>
-<h2 id="如果协议是https则加密"><a href="#如果协议是https则加密" class="headerlink" title="如果协议是https则加密"></a>如果协议是https则加密</h2><p>HTTPS = HTTP + 加密 + 认证 + 完整性保护</p>
-<h3 id="证书是什么"><a href="#证书是什么" class="headerlink" title="证书是什么"></a>证书是什么</h3><p>证书含有一对公钥和私钥，可以想像成钥匙和一个锁，只有服务器有这把钥匙，服务器把锁头给到客户端， 客户端把信息都放在锁头里面，然后发给服务器，因为只有服务器有这把钥匙所以也就只有服务器能解密客户端传过来的信息。</p>
-<ol>
-<li>申请CA证书，并安装在服务器上（一个文件，配置nginx支持监听443端口开启ssl并设置证书路径）</li>
-<li>浏览器发请求</li>
-<li>服务器发送带有公钥的证书</li>
-<li>浏览器解析证书<ol>
-<li>验证合法性，不合法会提示证书不受信任，合法则显示一个锁头</li>
-<li>合法后浏览器生成随时数的密钥，并用证书提供的公钥加密（也就是把消息放到锁头里面，以后的通信都通过这个随机数来进行加解密）</li>
-</ol>
-</li>
-<li>服务器解析消息，用跟证书公钥配对的私钥（也就是钥匙）将客户端发过来的消息解密并得到随机数，然后把内容通过随机数对称加密，发送给客户端</li>
-<li>客户端用生成的随机数（私钥）解密传过来的信息。</li>
-</ol>
-<h2 id="浏览器发送请求获取html"><a href="#浏览器发送请求获取html" class="headerlink" title="浏览器发送请求获取html"></a>浏览器发送请求获取html</h2><p>浏览器向获取到的服务器ip地址发送get请求获取到html</p>
-<h2 id="服务器响应html"><a href="#服务器响应html" class="headerlink" title="服务器响应html"></a>服务器响应html</h2><p>服务器可能是cdn</p>
-<h2 id="浏览器解析html"><a href="#浏览器解析html" class="headerlink" title="浏览器解析html"></a>浏览器解析html</h2><h2 id="浏览器渲染页面"><a href="#浏览器渲染页面" class="headerlink" title="浏览器渲染页面"></a>浏览器渲染页面</h2><h2 id="浏览器执行js脚本"><a href="#浏览器执行js脚本" class="headerlink" title="浏览器执行js脚本"></a>浏览器执行js脚本</h2><h2 id="浏览器发网络请求"><a href="#浏览器发网络请求" class="headerlink" title="浏览器发网络请求"></a>浏览器发网络请求</h2>
-          
+          <p>记录下大概的流程</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/12/20/url/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
