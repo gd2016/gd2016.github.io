@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在umi基础上扩展的umi-ui插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="umi-ui 源码解析">
+<meta property="og:url" content="http://yoursite.com/2020/10/16/umi-ui/index.html">
+<meta property="og:site_name" content="gd blog">
+<meta property="og:description" content="在umi基础上扩展的umi-ui插件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-11-26T06:14:09.490Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="umi-ui 源码解析">
+<meta name="twitter:description" content="在umi基础上扩展的umi-ui插件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/10/16/umi-ui/">
+
+
+
+
+
+  <title>umi-ui 源码解析 | gd blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3fa579cc4ca3e54eb3bb50917a03be6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gd blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/16/umi-ui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="guoding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avastar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gd blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">umi-ui 源码解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-16T10:50:39+08:00">
+                2020-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在umi基础上扩展的umi-ui插件</p>
+<a id="more"></a>
+<h2 id="umi-ui启动顺序"><a href="#umi-ui启动顺序" class="headerlink" title="umi-ui启动顺序"></a>umi-ui启动顺序</h2><ol>
+<li>node ./scripts/ui.js</li>
+<li><strong>打包</strong>3个ui插件： plugin-ui-blocks/plugin-ui-tasks/preset-ui</li>
+<li>运行ui界面  ui/web</li>
+<li>客户端： 运行界面 packages/ui/web 执行app.ts  render方法初始化<ol>
+<li>获取三方静态资源</li>
+<li>初始化socket</li>
+<li>获取项目列表</li>
+<li>如果是task路由 则表示打开一个项目</li>
+<li>初始化ui插件的api一系列方法，用于拓展ui第三方插件</li>
+</ol>
+</li>
+<li>服务端： packages/preset-ui/src/index.ts  引用了ui、task、blocks等插件 依次执行</li>
+</ol>
+<h2 id="umi插件机制"><a href="#umi插件机制" class="headerlink" title="umi插件机制"></a>umi插件机制</h2><ol>
+<li>preset-ui 作为umi的插件运行 (umi-ui暂时只能伴随项目启动，还没有做到全局启动)</li>
+<li>创建UmiUI实例（初始化socket和一系列针对web传过来的socket请求的处理）</li>
+<li>加载task、block插件</li>
+</ol>
+<h2 id="umi-ui插件"><a href="#umi-ui插件" class="headerlink" title="umi-ui插件"></a>umi-ui插件</h2><p>UI 插件与普通 Umi 的插件实际是一样的原理。</p>
+<p>只是比一般的 Umi 插件，多使用两个 API：</p>
+<ul>
+<li><code>api.addUIPlugin</code> 用于加载 ui 的 umd 包</li>
+<li><code>api.onUISocket</code> 为前端 ui 提供服务端接口</li>
+</ul>
+<h2 id="如何开放接口供第三方插件插件使用"><a href="#如何开放接口供第三方插件插件使用" class="headerlink" title="如何开放接口供第三方插件插件使用"></a>如何开放接口供第三方插件插件使用</h2><ol>
+<li>umi会调用插件的入口文件，通过传参的形式</li>
+</ol>
+<h2 id="ui-blocks插件"><a href="#ui-blocks插件" class="headerlink" title="ui-blocks插件"></a>ui-blocks插件</h2><ol>
+<li>通过window.postMessage通信</li>
+<li>通过babel插件，来注入一系列代码</li>
+</ol>
+<h2 id="用到的-package"><a href="#用到的-package" class="headerlink" title="用到的 package"></a>用到的 package</h2><ol>
+<li>yeoman-generator  脚手架生成工具</li>
+<li>resolve-from  解析文件路径</li>
+<li>binary-mirror-config 获取国内镜像配置</li>
+<li>cross-spawn   同node spawn 只是做了跨平台兼容</li>
+<li>execa  同node exec</li>
+<li>glob   根据路径规则获取匹配到的所有文件路径</li>
+<li>sylvanas 将ts文件转化为js文件</li>
+<li>sort-package-json 可以删除掉空行并且排序</li>
+<li>prettier 格式化文件</li>
+<li>mem-fs mem-fs-editor 拷贝文件</li>
+<li>babel系列包</li>
+<li>mustache</li>
+</ol>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ol>
+<li>lerna + yarn workspaces 的 monorepos项目</li>
+<li>babel插件编写</li>
+</ol>
+<h2 id="项目启动流程及插件加载调用"><a href="#项目启动流程及插件加载调用" class="headerlink" title="项目启动流程及插件加载调用"></a>项目启动流程及插件加载调用</h2><ol>
+<li>项目本身暂时是作为umi插件启动，后期作者会改为全局包</li>
+<li>入口文件：preset-ui(依次调用) <ol>
+<li>registerMethods.js注册umi-ui新方法（addUIPlugin/ui界面, onUISocket/serve服务端:主要处理websocket请求）</li>
+<li>启动umi-ui主界面及服务(开发调试socket服务在3000， 页面在8002会跨域，所以通过routes/common代理)</li>
+<li>addBubble  umi-ui辅助工具</li>
+<li>引入ui插件</li>
+</ol>
+</li>
+<li>加载插件（tasks、blocks）addUiPlugin(解析ui插件文件)) onUISocket（websocket处理服务）</li>
+<li>UI界面是调用插件的? 获取插件umd文件，通过eval执行并传递PluginAPI参数</li>
+</ol>
+<h2 id="task插件"><a href="#task插件" class="headerlink" title="task插件"></a>task插件</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ol>
+<li>安装umi-ui生成器</li>
+<li>安装依赖，进入create-umi通过generator生成项目</li>
+<li>根据模板package.json删除多余的文件，或者ts文件转化为js文件</li>
+</ol>
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><ol>
+<li>使用了dva的数据流，调用exec执行任务，向后端发送callRemote请求</li>
+<li>后端接受请求并执行项目scripts脚本</li>
+<li>terminal通信：<ol>
+<li>通过runCommand返回的子进程对象获取log</li>
+<li>触发监听事件：TaskEventType.STD_OUT_DATA</li>
+<li>send（websocket）方法发送log到客户端</li>
+<li>由于发送日志的type在serve没有声明，客户端是通过监听listenRemote获取到log</li>
+<li>获取到客户端terminal元素写入log</li>
+</ol>
+</li>
+</ol>
+<h2 id="blocks插件"><a href="#blocks插件" class="headerlink" title="blocks插件"></a>blocks插件</h2><h3 id="插入资产（babel插件）"><a href="#插入资产（babel插件）" class="headerlink" title="插入资产（babel插件）"></a>插入资产（babel插件）</h3><ol>
+<li>注入GUmiUIFlag全局组件（babel插件）</li>
+<li>插入区块<ol>
+<li>解析 url =&gt; git 地址</li>
+<li>如果不存在，则 git clone 到本地临时目录</li>
+<li>git pull 更新到最新分支</li>
+<li>依赖处理，处理依赖冲突、依赖安装、依赖写入</li>
+<li>写区块到项目目录中（nodeJs copy 到目标路径）</li>
+<li>写路由改文件内容（babel插件）</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="guoding 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="guoding 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/19/webpack-plugin/" rel="next" title="webpack-plugin & webpack-loader">
+                <i class="fa fa-chevron-left"></i> webpack-plugin & webpack-loader
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/22/vue/" rel="prev" title="vue大致原理浅析">
+                vue大致原理浅析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avastar.jpg" alt="guoding">
+            
+              <p class="site-author-name" itemprop="name">guoding</p>
+              <p class="site-description motion-element" itemprop="description">日新月异</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gd2016" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://mail.qq.com/cgi-bin/loginpage" target="_blank" title="371049740@qq.com">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>371049740@qq.com</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#umi-ui启动顺序"><span class="nav-number">1.</span> <span class="nav-text">umi-ui启动顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#umi插件机制"><span class="nav-number">2.</span> <span class="nav-text">umi插件机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#umi-ui插件"><span class="nav-number">3.</span> <span class="nav-text">umi-ui插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何开放接口供第三方插件插件使用"><span class="nav-number">4.</span> <span class="nav-text">如何开放接口供第三方插件插件使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ui-blocks插件"><span class="nav-number">5.</span> <span class="nav-text">ui-blocks插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的-package"><span class="nav-number">6.</span> <span class="nav-text">用到的 package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">7.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目启动流程及插件加载调用"><span class="nav-number">8.</span> <span class="nav-text">项目启动流程及插件加载调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task插件"><span class="nav-number">9.</span> <span class="nav-text">task插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目"><span class="nav-number">9.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动项目"><span class="nav-number">9.2.</span> <span class="nav-text">启动项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blocks插件"><span class="nav-number">10.</span> <span class="nav-text">blocks插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入资产（babel插件）"><span class="nav-number">10.1.</span> <span class="nav-text">插入资产（babel插件）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">guoding</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/love.js"></script>　
+</body>
+</html>
